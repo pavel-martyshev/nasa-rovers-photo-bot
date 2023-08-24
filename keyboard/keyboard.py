@@ -6,7 +6,7 @@ from aiogram import types
 from log_config import lg
 from utils import Utils
 
-storage = redis.Redis(host='yor host', port=6379, decode_responses=True, db='your db')
+storage = redis.Redis(host='localhost', port=6379, decode_responses=True, db=0)
 
 
 class InlineKeyboard:

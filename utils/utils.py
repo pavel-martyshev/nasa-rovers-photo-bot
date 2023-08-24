@@ -5,7 +5,7 @@ import redis
 from site_api import APIHandler
 from log_config import lg
 
-storage = redis.Redis(host='yor host', port=6379, decode_responses=True, db='your db')
+storage = redis.Redis(host='localhost', port=6379, decode_responses=True, db=0)
 
 
 class Utils:
