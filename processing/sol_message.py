@@ -28,17 +28,19 @@ async def sol_message_processing(message: types.Message) -> None:
     not_photo_text = await ms.get_not_photo()
     choose_rover_text = await ms.get_choose_rover()
 
-    kb= keyboard()
+    kb = keyboard()
 
     result = api.make_request(url)['photos']
+    res_len = len(result)
 
     if result:
-        if len(result) == 1:
-            media = types.InputMediaPhoto(result[0]['img_src'])
-        elif len(result) >= 2:
+        if res_len == 1:
+            media = result[0]['img_src']
+            await bot.send_photo(chat_id=message.from_user.id, photo=media)
+        elif res_len >= 2:
             for elem in result[:10]:
                 media.append(types.InputMediaPhoto(elem['img_src']))
-        await bot.send_media_group(chat_id=message.from_user.id, media=media)
+            await bot.send_media_group(chat_id=message.from_user.id, media=media)
     else:
         await message.answer(text=not_photo_text)
 
