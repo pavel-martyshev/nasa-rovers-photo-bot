@@ -64,7 +64,7 @@ async def sol_message_handler(message: types.Message) -> None:
     :return: None
     """
 
-    await sol_massage.sol_message_processing(message)
+    await sol_message.sol_message_processing(message)
 
 
 if __name__ == '__main__':
